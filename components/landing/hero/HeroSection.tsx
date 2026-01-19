@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Button } from '@/components/shared/Button';
 import { ArrowRight } from 'lucide-react';
-import { AnimatedCounter } from '@/components/shared/AnimatedCounter';
 
 interface HeroSectionProps {
   badge?: string;
@@ -107,14 +106,14 @@ export function HeroSection({
           className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl"
         >
           {[
-            { number: 54, suffix: '+', label: 'Years of Experience' },
-            { number: 1000, suffix: '+', label: 'Clients Served' },
-            { number: 40, suffix: '+', label: 'Years of Expertise' },
-            { number: 100, suffix: '%', label: 'Client Focused' },
+            { value: '54+', label: 'Years of Experience' },
+            { value: '1,000+', label: 'Clients Served' },
+            { value: '40+', label: 'Years of Expertise' },
+            { value: '100%', label: 'Client Focused' },
           ].map((stat, index) => (
             <div key={index} className="text-left">
               <div className="text-3xl lg:text-4xl font-bold text-white mb-2">
-                <AnimatedCounter end={stat.number} suffix={stat.suffix} />
+                {stat.value}
               </div>
               <div className="text-sm text-gray-400">{stat.label}</div>
             </div>
