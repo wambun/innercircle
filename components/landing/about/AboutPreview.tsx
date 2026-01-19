@@ -1,22 +1,24 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Button } from '@/components/shared/Button';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, Award, Users, Building } from 'lucide-react';
 
 const highlights = [
-  'Over 50 years of trusted experience',
-  'Personalized approach for every client',
-  'Comprehensive tax and business solutions',
-  'Serving clients across the US and Canada',
+  { icon: Award, text: 'Over 54 years of trusted experience' },
+  { icon: Users, text: 'Personalized approach for every client' },
+  { icon: Building, text: 'Serving businesses across the US & Canada' },
 ];
+
+const credentials = ['CPA', 'CGMA', 'Tax Expert', 'Business Advisor'];
 
 export function AboutPreview() {
   return (
-    <section className="py-20 lg:py-32">
+    <section className="py-20 lg:py-32 bg-gray-50">
       <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image/Visual Side */}
+          {/* Image Side */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -24,31 +26,57 @@ export function AboutPreview() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="aspect-[4/3] rounded-lg bg-gradient-to-br from-primary-500 to-primary-700 overflow-hidden relative">
-              {/* Decorative elements */}
-              <div className="absolute inset-0 bg-[url('/static/images/pattern.svg')] opacity-10" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-white p-8">
-                  <div className="text-6xl lg:text-7xl font-bold mb-4">ICA</div>
-                  <div className="text-lg font-medium opacity-90">
-                    Inner Circle Advisors
-                  </div>
-                  <div className="text-sm opacity-75 mt-2">Est. 1970</div>
-                </div>
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800"
+                alt="Gregory D. Hostelley, CPA, CGMA"
+                fill
+                className="object-cover"
+              />
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-secondary-500/80 via-transparent to-transparent" />
+
+              {/* Name overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h3 className="text-2xl font-bold mb-1">Gregory D. Hostelley</h3>
+                <p className="text-gray-200">CPA, CGMA • Founder & Principal</p>
               </div>
             </div>
-            {/* Floating stat card */}
+
+            {/* Floating credentials card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="absolute -bottom-6 -right-6 bg-white rounded-lg shadow-xl p-6 hidden lg:block"
+              className="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-xl p-6 hidden lg:block"
             >
-              <div className="text-4xl font-bold text-primary-500 mb-1">
-                1970
+              <div className="text-5xl font-bold text-primary-500 mb-2">
+                40+
               </div>
-              <div className="text-sm text-gray-600">Year Founded</div>
+              <div className="text-sm text-gray-600 font-medium">Years of Expertise</div>
+              <div className="flex gap-2 mt-3">
+                {credentials.map((cred) => (
+                  <span
+                    key={cred}
+                    className="px-2 py-1 bg-primary-100 text-primary-700 text-xs rounded-full font-medium"
+                  >
+                    {cred}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Floating year card */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="absolute -top-4 -left-4 bg-primary-500 text-white rounded-xl shadow-xl p-4 hidden lg:block"
+            >
+              <div className="text-sm font-medium opacity-80">Est.</div>
+              <div className="text-3xl font-bold">1970</div>
             </motion.div>
           </motion.div>
 
@@ -74,11 +102,13 @@ export function AboutPreview() {
             <p className="text-gray-600 mb-8 leading-relaxed">
               Led by Gregory D. Hostelley, CPA, CGMA, with over 40 years of
               experience, we provide the expertise and dedication your business
-              deserves.
+              deserves. A Cleveland native and one of the youngest CPAs in
+              Northeast Ohio history, Greg brings unparalleled insight to
+              every client relationship.
             </p>
 
             {/* Highlights */}
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-4 mb-8">
               {highlights.map((item, index) => (
                 <motion.li
                   key={index}
@@ -86,15 +116,17 @@ export function AboutPreview() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex items-center gap-3"
+                  className="flex items-center gap-4"
                 >
-                  <CheckCircle className="w-5 h-5 text-primary-500 flex-shrink-0" />
-                  <span className="text-gray-700">{item}</span>
+                  <div className="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
+                    <item.icon className="w-5 h-5 text-primary-500" />
+                  </div>
+                  <span className="text-gray-700 font-medium">{item.text}</span>
                 </motion.li>
               ))}
             </ul>
 
-            <Button href="/about">Meet Our Team</Button>
+            <Button href="/about">Learn Our Story</Button>
           </motion.div>
         </div>
       </div>

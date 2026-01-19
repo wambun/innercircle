@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Calculator, LineChart, Briefcase, ArrowRight } from 'lucide-react';
 
@@ -11,6 +12,8 @@ const services = [
     description:
       'Comprehensive tax planning services that help family businesses minimize liability and maximize savings.',
     href: '/services/tax-planning',
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800',
+    stats: 'Save up to 30% on taxes',
   },
   {
     icon: LineChart,
@@ -18,6 +21,8 @@ const services = [
     description:
       'Expert financial guidance and strategic insights to help you make smart business decisions.',
     href: '/services/virtual-cfo',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800',
+    stats: 'Strategic financial leadership',
   },
   {
     icon: Briefcase,
@@ -25,12 +30,14 @@ const services = [
     description:
       'Growth-focused consulting services for small to large businesses ready to scale.',
     href: '/services/business-advisory',
+    image: 'https://images.unsplash.com/photo-1553028826-f4804a6dba3b?q=80&w=800',
+    stats: 'Accelerate your growth',
   },
 ];
 
 export function ServicesGrid() {
   return (
-    <section className="py-20 lg:py-32 bg-gray-50">
+    <section className="py-20 lg:py-32 bg-white">
       <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
@@ -65,7 +72,7 @@ export function ServicesGrid() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -76,21 +83,40 @@ export function ServicesGrid() {
             >
               <Link
                 href={service.href}
-                className="group block h-full bg-white rounded-lg p-8 shadow-[0_18px_30px_rgba(0,49,39,0.1)] hover:shadow-[0_22px_40px_rgba(0,49,39,0.15)] transition-all duration-300 hover:-translate-y-1"
+                className="group block h-full bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] transition-all duration-500 hover:-translate-y-2"
               >
-                <div className="w-14 h-14 rounded-lg bg-primary-100 flex items-center justify-center mb-6 group-hover:bg-primary-500 transition-colors duration-300">
-                  <service.icon className="w-7 h-7 text-primary-500 group-hover:text-white transition-colors duration-300" />
+                {/* Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-4 left-4">
+                    <span className="inline-block px-3 py-1 rounded-full bg-primary-500 text-white text-xs font-medium">
+                      {service.stats}
+                    </span>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-secondary-500 mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
-                  {service.description}
-                </p>
-                <span className="inline-flex items-center text-primary-500 font-medium group-hover:gap-2 transition-all duration-300">
-                  Learn More
-                  <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </span>
+
+                {/* Content */}
+                <div className="p-6">
+                  <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center mb-4 group-hover:bg-primary-500 transition-colors duration-300">
+                    <service.icon className="w-6 h-6 text-primary-500 group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-secondary-500 mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 leading-relaxed">
+                    {service.description}
+                  </p>
+                  <span className="inline-flex items-center text-primary-500 font-medium group-hover:gap-3 transition-all duration-300">
+                    Learn More
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </span>
+                </div>
               </Link>
             </motion.div>
           ))}

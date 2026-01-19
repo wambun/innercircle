@@ -15,6 +15,7 @@ export default function BlogPage() {
         badge="Insights & News"
         title="The Inner Circle Blog"
         subtitle="Stay informed with the latest insights on tax planning, business strategy, and financial management."
+        backgroundImage="https://images.unsplash.com/photo-1434626881859-194d67b2b86f?q=80&w=2070"
       />
       <BlogContent />
     </>

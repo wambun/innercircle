@@ -1,4 +1,5 @@
 import { HeroSection } from '@/components/landing/hero/HeroSection';
+import { ClientLogos } from '@/components/landing/social-proof/ClientLogos';
 import { ServicesGrid } from '@/components/landing/services/ServicesGrid';
 import { AboutPreview } from '@/components/landing/about/AboutPreview';
 import { FeaturesSection } from '@/components/landing/features/FeaturesSection';
@@ -15,6 +16,7 @@ export default function Home() {
         primaryCTA={{ text: 'Get Started', href: '/contact' }}
         secondaryCTA={{ text: 'Our Services', href: '/services' }}
       />
+      <ClientLogos />
       <ServicesGrid />
       <AboutPreview />
       <FeaturesSection />

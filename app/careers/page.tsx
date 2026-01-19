@@ -16,6 +16,7 @@ export default function CareersPage() {
         badge="Join Our Team"
         title="Build Your Career with Us"
         subtitle="We're always looking for talented professionals who share our passion for helping businesses succeed."
+        backgroundImage="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070"
       />
       <CareersContent />
       <CTASection

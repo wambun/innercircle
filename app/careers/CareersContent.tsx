@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Briefcase, MapPin, Clock, ArrowRight, Heart, TrendingUp, Users, Coffee } from 'lucide-react';
 
 const benefits = [
@@ -60,8 +61,38 @@ const openings = [
 export function CareersContent() {
   return (
     <>
+      {/* Culture Gallery Section */}
+      <section className="py-16 lg:py-20">
+        <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600', alt: 'Team collaboration' },
+              { src: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=600', alt: 'Office meeting' },
+              { src: 'https://images.unsplash.com/photo-1553028826-f4804a6dba3b?q=80&w=600', alt: 'Professional environment' },
+              { src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600', alt: 'Modern workspace' },
+            ].map((photo, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`relative overflow-hidden rounded-xl ${index === 0 ? 'col-span-2 row-span-2 h-64 lg:h-80' : 'h-32 lg:h-40'}`}
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className="object-cover hover:scale-110 transition-transform duration-500"
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Benefits Section */}
-      <section className="py-20 lg:py-28">
+      <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <motion.h2
@@ -92,7 +123,7 @@ export function CareersContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
+                className="text-center p-6 rounded-xl bg-gray-50 hover:bg-primary-50 transition-colors"
               >
                 <div className="w-16 h-16 rounded-full bg-primary-100 flex items-center justify-center mx-auto mb-4">
                   <benefit.icon className="w-8 h-8 text-primary-500" />

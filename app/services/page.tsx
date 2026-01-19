@@ -16,6 +16,7 @@ export default function ServicesPage() {
         badge="Our Services"
         title="Comprehensive Financial Solutions"
         subtitle="We provide personalized services tailored to help your business thrive at every stage of growth."
+        backgroundImage="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2070"
       />
       <div className="py-12">
         <ServicesGrid />
