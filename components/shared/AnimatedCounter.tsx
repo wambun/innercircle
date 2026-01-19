@@ -16,20 +16,27 @@ export function AnimatedCounter({
   suffix = '',
   prefix = '',
 }: AnimatedCounterProps) {
-  const [count, setCount] = useState(0);
+  // Start with end value for SSR, then animate on client
+  const [count, setCount] = useState(end);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const hasAnimated = useRef(false);
+  const isInView = useInView(ref, { once: true, margin: '0px' });
 
   useEffect(() => {
-    if (isInView && !hasAnimated.current) {
-      hasAnimated.current = true;
+    // Reset to 0 on mount for animation
+    setCount(0);
+  }, []);
+
+  useEffect(() => {
+    if (isInView && !hasAnimated) {
+      setHasAnimated(true);
       const startTime = Date.now();
-      const endTime = startTime + duration * 1000;
+      const animationDuration = duration * 1000;
 
       const animate = () => {
         const now = Date.now();
-        const progress = Math.min((now - startTime) / (duration * 1000), 1);
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / animationDuration, 1);
 
         // Easing function for smooth animation
         const easeOutQuart = 1 - Math.pow(1 - progress, 4);
@@ -37,7 +44,7 @@ export function AnimatedCounter({
 
         setCount(currentCount);
 
-        if (now < endTime) {
+        if (progress < 1) {
           requestAnimationFrame(animate);
         } else {
           setCount(end);
@@ -46,7 +53,7 @@ export function AnimatedCounter({
 
       requestAnimationFrame(animate);
     }
-  }, [isInView, end, duration]);
+  }, [isInView, hasAnimated, end, duration]);
 
   return (
     <span ref={ref}>
