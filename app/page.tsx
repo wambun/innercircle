@@ -1,10 +1,25 @@
+import { HeroSection } from '@/components/landing/hero/HeroSection';
+import { ServicesGrid } from '@/components/landing/services/ServicesGrid';
+import { AboutPreview } from '@/components/landing/about/AboutPreview';
+import { FeaturesSection } from '@/components/landing/features/FeaturesSection';
+import { TestimonialsSection } from '@/components/landing/testimonials/TestimonialsSection';
+import { CTASection } from '@/components/landing/cta/CTASection';
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <h1 className="text-4xl font-bold">Welcome</h1>
-      <p className="mt-4 text-muted-foreground">
-        Start building your application.
-      </p>
-    </main>
+    <>
+      <HeroSection
+        badge="Trusted Business Advisors"
+        title="Expert Financial Guidance for Your Business Success"
+        subtitle="Inner Circle Advisors provides comprehensive tax planning and business advisory services that help family businesses thrive."
+        primaryCTA={{ text: 'Get Started', href: '/contact' }}
+        secondaryCTA={{ text: 'Our Services', href: '/services' }}
+      />
+      <ServicesGrid />
+      <AboutPreview />
+      <FeaturesSection />
+      <TestimonialsSection />
+      <CTASection />
+    </>
   );
 }
