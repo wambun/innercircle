@@ -1,26 +1,26 @@
 /* Inner Circle Advisors - Brand Colors
- * Based on Insurance Company Framer Template design system
+ * Using the original blue from innercircle.cpa
  */
 const colors = {
   primary: {
-    lighter: '#c6fbec', // Light mint - badges, highlights
-    light: '#6ee7c7',   // Lighter teal
-    main: '#11dba3',    // Primary teal - CTAs, accents
-    dark: '#1a6a59',    // Dark teal - secondary
-    darker: '#0d4a3d',  // Darker teal
+    lighter: '#e0f2fe', // Light blue - badges, highlights
+    light: '#7dd3fc',   // Lighter blue
+    main: '#2ea3f2',    // Primary blue - CTAs, accents (from old site)
+    dark: '#1d8cd7',    // Dark blue
+    darker: '#1570b8',  // Darker blue
   },
   secondary: {
-    lighter: '#e6f7f3', // Very light navy
-    light: '#335d52',   // Light navy
-    main: '#003127',    // Dark navy - footer, dark sections
-    dark: '#002920',    // Darker navy
-    darker: '#001a15',  // Darkest navy
+    lighter: '#f3f4f6', // Light gray
+    light: '#4b5563',   // Medium gray
+    main: '#222222',    // Dark charcoal - footer, dark sections
+    dark: '#1f1f1f',    // Darker charcoal
+    darker: '#111111',  // Darkest
   },
   neutral: {
     white: '#ffffff',
     offWhite: '#fafafa', // Alternate backgrounds
-    gray: '#696e77',     // Body text
-    grayLight: '#9ca3af',
+    gray: '#666666',     // Body text (from old site)
+    grayLight: '#999999',
   },
 };
 
