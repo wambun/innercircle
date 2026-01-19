@@ -41,15 +41,27 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className={cn(
-              'relative h-12 w-48 transition-all duration-300',
-              isScrolled ? '' : 'brightness-0 invert'
-            )}>
+            <div className="relative h-12 w-48">
+              {/* Regular logo for scrolled state (white bg) */}
               <Image
                 src="/logo.webp"
                 alt="Inner Circle Advisors"
                 fill
-                className="object-contain object-left"
+                className={cn(
+                  'object-contain object-left transition-opacity duration-300',
+                  isScrolled ? 'opacity-100' : 'opacity-0'
+                )}
+                priority
+              />
+              {/* White logo for dark header */}
+              <Image
+                src="/logo-white.webp"
+                alt="Inner Circle Advisors"
+                fill
+                className={cn(
+                  'object-contain object-left transition-opacity duration-300',
+                  isScrolled ? 'opacity-0' : 'opacity-100'
+                )}
                 priority
               />
             </div>
