@@ -20,7 +20,8 @@ const contactInfo = [
   {
     icon: Phone,
     title: 'Phone',
-    details: ['Contact us for phone number'],
+    details: ['(216) 642-0330', 'Toll-free: (833) 836-0330'],
+    href: 'tel:2166420330',
   },
   {
     icon: Clock,

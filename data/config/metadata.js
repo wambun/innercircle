@@ -28,7 +28,8 @@ const metadata = {
     state: 'OH',
     zip: '44131',
   },
-  phone: '',
+  phone: '(216) 642-0330',
+  tollFree: '(833) 836-0330',
 };
 
 module.exports = { metadata };

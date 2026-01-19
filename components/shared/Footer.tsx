@@ -33,6 +33,14 @@ export function Footer() {
                   {siteConfig.address?.city}, {siteConfig.address?.state}{' '}
                   {siteConfig.address?.zip}
                 </p>
+                {siteConfig.phone && (
+                  <a
+                    href={`tel:${siteConfig.phone.replace(/[^0-9]/g, '')}`}
+                    className="block hover:text-primary-500 transition-colors"
+                  >
+                    {siteConfig.phone}
+                  </a>
+                )}
                 {siteConfig.email && (
                   <a
                     href={`mailto:${siteConfig.email}`}
