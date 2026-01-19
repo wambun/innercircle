@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -32,18 +33,26 @@ export function Header() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm'
-          : 'bg-transparent'
+          ? 'bg-white shadow-md'
+          : 'bg-secondary-500/80 backdrop-blur-sm'
       )}
     >
       <nav className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold text-secondary-500">
-              Inner Circle
-            </span>
-            <span className="text-xl font-light text-primary-500">Advisors</span>
+          <Link href="/" className="flex items-center">
+            <div className={cn(
+              'relative h-12 w-48 transition-all duration-300',
+              isScrolled ? '' : 'brightness-0 invert'
+            )}>
+              <Image
+                src="/logo.webp"
+                alt="Inner Circle Advisors"
+                fill
+                className="object-contain object-left"
+                priority
+              />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -54,9 +63,13 @@ export function Header() {
                 href={link.href}
                 className={cn(
                   'text-sm font-medium transition-colors duration-200',
-                  pathname === link.href
-                    ? 'text-primary-500'
-                    : 'text-secondary-500 hover:text-primary-500'
+                  isScrolled
+                    ? pathname === link.href
+                      ? 'text-primary-500'
+                      : 'text-secondary-500 hover:text-primary-500'
+                    : pathname === link.href
+                      ? 'text-primary-300'
+                      : 'text-white hover:text-primary-300'
                 )}
               >
                 {link.title}
@@ -66,7 +79,11 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button href="/contact" size="sm">
+            <Button
+              href="/contact"
+              size="sm"
+              variant={isScrolled ? 'primary' : 'light'}
+            >
               Get Started
             </Button>
           </div>
@@ -74,7 +91,10 @@ export function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-secondary-500"
+            className={cn(
+              'lg:hidden p-2 transition-colors',
+              isScrolled ? 'text-secondary-500' : 'text-white'
+            )}
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
