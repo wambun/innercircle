@@ -7,32 +7,48 @@ import { Linkedin, Mail } from 'lucide-react';
 const teamMembers = [
   {
     name: 'Gregory D. Hostelley',
-    title: 'Chief Executive Advisor',
-    credentials: 'CPA, CGMA',
+    title: 'Managing Principal',
+    credentials: 'CPA, CGMA, Certified Value Builder™',
     image: '/team/greg.webp',
     bio: 'A lifetime Cleveland resident and St. Ignatius alumnus, Greg has been passionate about entrepreneurship for over 40 years. He began working in his father\'s company at age 12 and became one of the youngest CPAs in Northeast Ohio history. Greg built Inner Circle Advisors one satisfied client at a time, focusing on helping owners implement strategic plans to take their businesses to the next level.',
     linkedin: 'https://www.linkedin.com/in/greghostelley/',
   },
   {
+    name: 'Diane Harbour',
+    title: 'Tax Services Manager',
+    credentials: 'EA',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400',
+    bio: 'Since 1980, Diane has developed extensive expertise in Tax & Accounting, specializing in Business & Individuals, Estate and Trust Taxes, and Nonprofit Organizations. She manages tax preparers and a portfolio of individual tax clients.',
+    linkedin: 'https://www.linkedin.com/in/diane-harbour-ea-a7a0002a/',
+  },
+  {
     name: 'Andrew Lesak',
     title: 'Director of Business Operations',
-    credentials: '',
+    credentials: 'BSA',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400',
-    bio: 'Andrew oversees the day-to-day operations of Inner Circle Advisors, ensuring smooth delivery of services and maintaining the high standards our clients expect.',
+    bio: 'A seasoned professional with 21 years of experience, Andrew manages all support activities for the firm including human resources, information technology, facilities, financial reporting, product development, and workflow optimization.',
+    linkedin: 'https://www.linkedin.com/in/andrewlesak/',
   },
   {
-    name: 'Christy Raynor',
-    title: 'Staff Accountant',
+    name: 'Hina Arora',
+    title: 'Tax Manager',
     credentials: '',
     image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400',
-    bio: 'Christy brings meticulous attention to detail to every client engagement, providing reliable accounting support and ensuring accuracy in all financial matters.',
+    bio: 'Hina brings expertise in tax preparation and planning, working closely with clients to ensure compliance and maximize tax efficiency for businesses and individuals alike.',
   },
   {
-    name: 'Margaret Jacobs',
-    title: 'Client Excellence Coordinator',
+    name: 'Cheryl Barnes',
+    title: 'Office Manager & Client Satisfaction Manager',
     credentials: '',
     image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=400',
-    bio: 'Margaret is the first point of contact for our clients, ensuring exceptional service delivery and maintaining the strong relationships that define Inner Circle Advisors.',
+    bio: 'Cheryl ensures smooth office operations and exceptional client experiences. She is dedicated to maintaining the strong relationships that define Inner Circle Advisors.',
+  },
+  {
+    name: 'Dumesha Udeshini',
+    title: 'Training Manager',
+    credentials: '',
+    image: 'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=400',
+    bio: 'Dumesha leads training initiatives to ensure the team stays current with the latest industry practices, technologies, and regulatory requirements.',
   },
 ];
 
@@ -72,7 +88,7 @@ export function TeamSection() {
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
