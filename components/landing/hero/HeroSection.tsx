@@ -26,7 +26,7 @@ export function HeroSection({
   subtitle = 'Inner Circle Advisors provides comprehensive tax planning and business advisory services that help family businesses thrive.',
   primaryCTA = { text: 'Get Started', href: '/contact' },
   secondaryCTA = { text: 'Learn More', href: '/about' },
-  backgroundImage = 'https://images.unsplash.com/photo-1560472355-536de3962603?q=80&w=2070',
+  backgroundImage = 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070',
 }: HeroSectionProps) {
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
