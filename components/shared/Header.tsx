@@ -41,7 +41,7 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="relative h-12 w-48">
+            <div className="relative h-[67px] w-[269px]">
               {/* Regular logo for scrolled state (white bg) */}
               <Image
                 src="/logo.webp"
