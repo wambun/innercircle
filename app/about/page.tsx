@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { PageHero } from '@/components/landing/hero/PageHero';
 import { AboutContent } from './AboutContent';
+import { TeamSection } from '@/components/about/TeamSection';
 import { CTASection } from '@/components/landing/cta/CTASection';
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function AboutPage() {
         backgroundImage="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070"
       />
       <AboutContent />
+      <TeamSection />
       <CTASection
         title="Ready to Join the Inner Circle?"
         subtitle="Let's discuss how we can help your business reach its full potential."

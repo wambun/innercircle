@@ -1,7 +1,7 @@
 {
-  "name": "Your App",
-  "short_name": "Your App",
-  "description": "Your app description",
+  "name": "Inner Circle Advisors",
+  "short_name": "ICA",
+  "description": "Expert Tax Planning & Business Advisory Services",
   "dir": "auto",
   "lang": "en-US",
   "display": "standalone",

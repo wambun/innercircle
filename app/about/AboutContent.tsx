@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Award, Users, Target, Heart } from 'lucide-react';
 
 const values = [
@@ -106,21 +107,56 @@ export function AboutContent() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="aspect-square rounded-lg bg-gradient-to-br from-primary-500 to-primary-700 overflow-hidden relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white p-8">
-                    <div className="text-5xl lg:text-6xl font-bold mb-2">GDH</div>
-                    <div className="text-lg font-medium opacity-90">
-                      Gregory D. Hostelley
-                    </div>
-                    <div className="text-sm opacity-75 mt-2">CPA, CGMA</div>
-                    <div className="mt-6 pt-6 border-t border-white/20">
-                      <div className="text-3xl font-bold">40+</div>
-                      <div className="text-sm opacity-75">Years of Experience</div>
-                    </div>
-                  </div>
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/team/greg.webp"
+                  alt="Gregory D. Hostelley, CPA, CGMA"
+                  fill
+                  className="object-cover object-top"
+                />
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary-500/90 via-transparent to-transparent" />
+
+                {/* Name overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h3 className="text-2xl font-bold mb-1">Gregory D. Hostelley</h3>
+                  <p className="text-gray-200">CPA, CGMA • Managing Principal</p>
                 </div>
               </div>
+
+              {/* Floating experience card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-xl p-6 hidden lg:block"
+              >
+                <div className="text-5xl font-bold text-primary-500 mb-2">40+</div>
+                <div className="text-sm text-gray-600 font-medium">Years of Experience</div>
+                <div className="flex gap-2 mt-3">
+                  {['CPA', 'CGMA'].map((cred) => (
+                    <span
+                      key={cred}
+                      className="px-3 py-1 bg-primary-100 text-primary-700 text-xs rounded-full font-medium"
+                    >
+                      {cred}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Floating year badge */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="absolute -top-4 -left-4 bg-primary-500 text-white rounded-xl shadow-xl p-4 hidden lg:block"
+              >
+                <div className="text-sm font-medium opacity-80">Est.</div>
+                <div className="text-3xl font-bold">1970</div>
+              </motion.div>
             </motion.div>
           </div>
         </div>

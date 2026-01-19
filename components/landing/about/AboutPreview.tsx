@@ -28,7 +28,7 @@ export function AboutPreview() {
           >
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800"
+                src="/team/greg.webp"
                 alt="Gregory D. Hostelley, CPA, CGMA"
                 fill
                 className="object-cover"
